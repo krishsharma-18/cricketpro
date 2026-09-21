@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cricket Role Models</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Cricket Role Model</title>
+
 
 <style>
+
+/* =========================
+   BASIC RESET
+========================= */
 
 *{
     margin:0;
@@ -14,173 +23,1005 @@
     box-sizing:border-box;
 }
 
+
 body{
+
     font-family:Arial, sans-serif;
-    background:#061b15;
-    color:white;
+
+    color:#102a43;
+
     min-height:100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eaf8ff,
+            #ffffff,
+            #d8f2ff
+        );
+
+    overflow-x:hidden;
+
 }
 
-/* Heading */
+
+/* =========================
+   HEADER
+========================= */
 
 .header{
+
     text-align:center;
-    padding:40px 20px 20px;
+
+    padding:50px 20px 25px;
+
 }
+
 
 .header h1{
-    font-size:40px;
-    color:#00ffae;
-    margin-bottom:10px;
+
+    font-size:45px;
+
+    color:#0066cc;
+
+    margin-bottom:12px;
+
+    text-shadow:
+        0 4px 15px rgba(0,100,200,0.2);
+
 }
+
 
 .header p{
-    color:#a9bdb7;
+
+    color:#42677f;
+
     font-size:18px;
+
 }
 
-/* Player container */
+
+/* =========================
+   FLOATING CRICKET OBJECTS
+========================= */
+
+.cricket-object{
+
+    position:fixed;
+
+    z-index:2;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:0.3s;
+
+}
+
+
+/* Bat */
+
+.bat{
+
+    font-size:65px;
+
+    left:20px;
+
+    bottom:80px;
+
+    animation:
+        floatBat 4s ease-in-out infinite;
+
+}
+
+
+@keyframes floatBat{
+
+    0%,100%{
+        transform:translateY(0) rotate(-15deg);
+    }
+
+    50%{
+        transform:translateY(-25px) rotate(10deg);
+    }
+
+}
+
+
+/* Ball */
+
+.ball{
+
+    font-size:45px;
+
+    right:35px;
+
+    top:35%;
+
+    animation:
+        floatBall 3s ease-in-out infinite;
+
+}
+
+
+@keyframes floatBall{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-35px);
+    }
+
+}
+
+
+/* Wicket */
+
+.wicket{
+
+    font-size:55px;
+
+    right:25px;
+
+    bottom:70px;
+
+    animation:
+        floatWicket 4s ease-in-out infinite;
+
+}
+
+
+@keyframes floatWicket{
+
+    0%,100%{
+        transform:rotate(-5deg);
+    }
+
+    50%{
+        transform:rotate(5deg);
+    }
+
+}
+
+
+/* Hover */
+
+.cricket-object:hover{
+
+    transform:scale(1.2);
+
+}
+
+
+/* =========================
+   PLAYERS
+========================= */
 
 .players{
+
     width:95%;
+
     max-width:1200px;
-    margin:30px auto;
+
+    margin:35px auto;
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:25px;
+
 }
 
-/* Player card */
+
+/* =========================
+   PLAYER CARD
+========================= */
 
 .player-card{
-    background:rgba(20,45,38,0.9);
-    border:1px solid #29483f;
-    border-radius:20px;
+
+    background:
+        rgba(255,255,255,0.95);
+
+    border:2px solid #d5eaf7;
+
+    border-radius:22px;
+
     padding:25px 15px;
+
     text-align:center;
+
     cursor:pointer;
-    transition:0.3s;
+
+    transition:0.35s;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,100,180,0.12);
+
 }
 
+
 .player-card:hover{
-    transform:translateY(-10px);
-    border:2px solid #00ffae;
-    box-shadow:0 0 25px rgba(0,255,174,0.35);
+
+    transform:
+        translateY(-10px);
+
+    border-color:#008cff;
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,120,220,0.25);
+
 }
+
 
 /* Selected card */
 
 .player-card.selected{
-    border:2px solid #00ffae;
-    box-shadow:0 0 30px rgba(0,255,174,0.5);
+
+    border:3px solid #008cff;
+
+    box-shadow:
+        0 0 30px
+        rgba(0,140,255,0.35);
+
+    transform:
+        translateY(-8px);
+
 }
 
-/* Image circle */
+
+/* =========================
+   PLAYER IMAGE
+========================= */
 
 .avatar{
+
     width:150px;
+
     height:150px;
+
     margin:auto;
+
     border-radius:50%;
+
     overflow:hidden;
-    border:5px solid #d9fff3;
-    background:#009b6d;
-    box-shadow:0 0 25px rgba(0,255,174,0.35);
+
+    border:5px solid #ffffff;
+
+    background:#dff5ff;
+
+    box-shadow:
+        0 0 0 5px #008cff,
+        0 8px 25px
+        rgba(0,100,200,0.25);
+
 }
+
 
 .avatar img{
+
     width:100%;
+
     height:100%;
+
     object-fit:cover;
+
     display:block;
+
+    transition:0.4s;
+
 }
 
-/* Name */
+
+.player-card:hover
+.avatar img{
+
+    transform:scale(1.08);
+
+}
+
+
+/* =========================
+   PLAYER NAME
+========================= */
 
 .player-card h2{
+
     margin-top:20px;
+
     font-size:22px;
+
+    color:#123b5d;
+
 }
+
 
 .player-card p{
+
     margin-top:8px;
-    color:#a9bdb7;
+
+    color:#52748c;
+
     font-size:16px;
+
 }
 
-/* Selected player information */
 
-#info{
+/* =========================
+   USER INFORMATION
+========================= */
+
+.user-section{
+
     width:90%;
-    max-width:800px;
-    margin:40px auto;
-    padding:30px;
+
+    max-width:900px;
+
+    margin:60px auto 30px;
+
+    padding:35px;
+
+    background:#ffffff;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,100,200,0.15);
+
+    border:
+        2px solid #d5eaf7;
+
+}
+
+
+.section-title{
+
     text-align:center;
-    background:#102d25;
-    border-radius:20px;
-    border:1px solid #29483f;
+
+    margin-bottom:25px;
+
 }
 
-#info h2{
-    color:#00ffae;
-    margin-bottom:15px;
+
+.section-title h2{
+
+    color:#006dcc;
+
+    font-size:30px;
+
+    margin-bottom:8px;
+
 }
 
-#info p{
-    color:#c7d5d1;
+
+.section-title p{
+
+    color:#52748c;
+
+}
+
+
+/* Form */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+
+.input-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+.input-box label{
+
+    font-weight:bold;
+
+    color:#234b67;
+
+    margin-bottom:8px;
+
+}
+
+
+.input-box input,
+.input-box select{
+
+    padding:13px;
+
+    border:
+        2px solid #cfe5f3;
+
+    border-radius:12px;
+
+    outline:none;
+
+    font-size:16px;
+
+    background:#f7fcff;
+
+}
+
+
+.input-box input:focus,
+.input-box select:focus{
+
+    border-color:#008cff;
+
+    box-shadow:
+        0 0 10px
+        rgba(0,140,255,0.15);
+
+}
+
+
+/* Button */
+
+.start-btn{
+
+    display:block;
+
+    margin:25px auto 0;
+
+    padding:14px 35px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0077dd,
+            #00aaff
+        );
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+
+.start-btn:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,120,220,0.3);
+
+}
+
+
+/* =========================
+   JOURNEY
+========================= */
+
+#journey{
+
+    width:90%;
+
+    max-width:1000px;
+
+    margin:35px auto;
+
+    padding:35px;
+
+    background:white;
+
+    border-radius:25px;
+
+    border:
+        2px solid #d5eaf7;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,100,200,0.12);
+
+    display:none;
+
+    animation:
+        slideUp 0.6s ease;
+
+}
+
+
+@keyframes slideUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+#journey h2{
+
+    color:#006dcc;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    font-size:32px;
+
+}
+
+
+.journey-box{
+
+    background:#eef9ff;
+
+    padding:20px;
+
+    margin:15px 0;
+
+    border-left:
+        5px solid #008cff;
+
+    border-radius:12px;
+
+}
+
+
+.journey-box h3{
+
+    color:#075a94;
+
+    margin-bottom:8px;
+
+}
+
+
+.journey-box p{
+
+    color:#456b82;
+
     line-height:1.6;
+
 }
 
-/* Mobile */
+
+/* =========================
+   PRACTICE
+========================= */
+
+#practice{
+
+    width:90%;
+
+    max-width:1000px;
+
+    margin:35px auto 60px;
+
+    padding:35px;
+
+    background:#ffffff;
+
+    border-radius:25px;
+
+    border:
+        2px solid #d5eaf7;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,100,200,0.12);
+
+    display:none;
+
+}
+
+
+#practice h2{
+
+    color:#006dcc;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    font-size:32px;
+
+}
+
+
+.practice-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+
+}
+
+
+.practice-card{
+
+    padding:22px;
+
+    background:#eef9ff;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    border:
+        1px solid #cdeafa;
+
+    transition:0.3s;
+
+}
+
+
+.practice-card:hover{
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 10px 20px
+        rgba(0,100,200,0.12);
+
+}
+
+
+.practice-card .icon{
+
+    font-size:40px;
+
+    margin-bottom:10px;
+
+}
+
+
+.practice-card h3{
+
+    color:#075a94;
+
+    margin-bottom:8px;
+
+}
+
+
+.practice-card p{
+
+    color:#52748c;
+
+    line-height:1.5;
+
+}
+
+
+/* =========================
+   ANIMATION MESSAGE
+========================= */
+
+#animationMessage{
+
+    position:fixed;
+
+    top:50%;
+
+    left:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(0);
+
+    background:
+        rgba(0,100,200,0.95);
+
+    color:white;
+
+    padding:25px 45px;
+
+    border-radius:20px;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    z-index:100;
+
+    pointer-events:none;
+
+}
+
+
+#animationMessage.show{
+
+    animation:
+        actionAnimation 1.2s ease;
+
+}
+
+
+@keyframes actionAnimation{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(0.3)
+            rotate(-10deg);
+
+    }
+
+    40%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.2)
+            rotate(5deg);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1)
+            rotate(0);
+
+    }
+
+}
+
+
+/* =========================
+   FLYING BALL
+========================= */
+
+.flying-ball{
+
+    position:fixed;
+
+    font-size:35px;
+
+    z-index:90;
+
+    pointer-events:none;
+
+    animation:
+        flyBall 1s ease-out forwards;
+
+}
+
+
+@keyframes flyBall{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translate(350px,-250px)
+            rotate(720deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    text-align:center;
+
+    padding:25px;
+
+    color:#52748c;
+
+    background:#e8f6ff;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:900px){
 
     .players{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .practice-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
     }
 
 }
 
-@media(max-width:550px){
+
+@media(max-width:600px){
 
     .players{
+
         grid-template-columns:1fr;
+
+    }
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .practice-grid{
+
+        grid-template-columns:1fr;
+
     }
 
     .header h1{
-        font-size:30px;
+
+        font-size:32px;
+
+    }
+
+    .bat{
+
+        font-size:45px;
+
+        left:5px;
+
+    }
+
+    .ball{
+
+        font-size:35px;
+
+        right:10px;
+
+    }
+
+    .wicket{
+
+        font-size:40px;
+
+        right:5px;
+
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
-<!-- Heading -->
+
+<!-- =========================
+     FLOATING OBJECTS
+========================= -->
+
+<div class="cricket-object bat"
+     onclick="batAnimation()">
+
+    🏏
+
+</div>
+
+
+<div class="cricket-object ball"
+     onclick="ballAnimation()">
+
+    🔴
+
+</div>
+
+
+<div class="cricket-object wicket"
+     onclick="wicketAnimation()">
+
+    🏏
+
+</div>
+
+
+<!-- Animation Message -->
+
+<div id="animationMessage"></div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <div class="header">
 
-    <h1>🏏 PLAY LIKE YOUR HERO</h1>
+    <h1>
+        🏏 PLAY LIKE YOUR HERO
+    </h1>
 
     <p>
-        Select a player to explore their journey and practice path.
+        Select a player to explore their journey,
+        practice path and cricket style.
     </p>
 
 </div>
 
 
-<!-- Players -->
+<!-- =========================
+     PLAYER SECTION
+========================= -->
 
 <div class="players">
 
 
-    <!-- Virat Kohli -->
+    <!-- VIRAT KOHLI -->
 
     <div class="player-card"
-         onclick="selectPlayer('Virat Kohli', this)">
+         onclick="selectPlayer('Virat Kohli',this)">
 
         <div class="avatar">
 
@@ -189,17 +1030,21 @@ body{
 
         </div>
 
-        <h2>Virat Kohli</h2>
+        <h2>
+            Virat Kohli
+        </h2>
 
-        <p>Batter • India</p>
+        <p>
+            Batter • India
+        </p>
 
     </div>
 
 
-    <!-- Rohit Sharma -->
+    <!-- ROHIT SHARMA -->
 
     <div class="player-card"
-         onclick="selectPlayer('Rohit Sharma', this)">
+         onclick="selectPlayer('Rohit Sharma',this)">
 
         <div class="avatar">
 
@@ -208,17 +1053,21 @@ body{
 
         </div>
 
-        <h2>Rohit Sharma</h2>
+        <h2>
+            Rohit Sharma
+        </h2>
 
-        <p>Batter • India</p>
+        <p>
+            Batter • India
+        </p>
 
     </div>
 
 
-    <!-- MS Dhoni -->
+    <!-- MS DHONI -->
 
     <div class="player-card"
-         onclick="selectPlayer('MS Dhoni', this)">
+         onclick="selectPlayer('MS Dhoni',this)">
 
         <div class="avatar">
 
@@ -227,17 +1076,21 @@ body{
 
         </div>
 
-        <h2>MS Dhoni</h2>
+        <h2>
+            MS Dhoni
+        </h2>
 
-        <p>Wicketkeeper • India</p>
+        <p>
+            Wicketkeeper • India
+        </p>
 
     </div>
 
 
-    <!-- Chris Gayle -->
+    <!-- CHRIS GAYLE -->
 
     <div class="player-card"
-         onclick="selectPlayer('Chris Gayle', this)">
+         onclick="selectPlayer('Chris Gayle',this)">
 
         <div class="avatar">
 
@@ -246,17 +1099,21 @@ body{
 
         </div>
 
-        <h2>Chris Gayle</h2>
+        <h2>
+            Chris Gayle
+        </h2>
 
-        <p>Batter • West Indies</p>
+        <p>
+            Batter • West Indies
+        </p>
 
     </div>
 
 
-    <!-- AB de Villiers -->
+    <!-- AB DE VILLIERS -->
 
     <div class="player-card"
-         onclick="selectPlayer('AB de Villiers', this)">
+         onclick="selectPlayer('AB de Villiers',this)">
 
         <div class="avatar">
 
@@ -265,17 +1122,21 @@ body{
 
         </div>
 
-        <h2>AB de Villiers</h2>
+        <h2>
+            AB de Villiers
+        </h2>
 
-        <p>Batter • South Africa</p>
+        <p>
+            Batter • South Africa
+        </p>
 
     </div>
 
 
-    <!-- Sachin Tendulkar -->
+    <!-- SACHIN TENDULKAR -->
 
     <div class="player-card"
-         onclick="selectPlayer('Sachin Tendulkar', this)">
+         onclick="selectPlayer('Sachin Tendulkar',this)">
 
         <div class="avatar">
 
@@ -284,17 +1145,21 @@ body{
 
         </div>
 
-        <h2>Sachin Tendulkar</h2>
+        <h2>
+            Sachin Tendulkar
+        </h2>
 
-        <p>Batter • India</p>
+        <p>
+            Batter • India
+        </p>
 
     </div>
 
 
-    <!-- Jasprit Bumrah -->
+    <!-- JASPRIT BUMRAH -->
 
     <div class="player-card"
-         onclick="selectPlayer('Jasprit Bumrah', this)">
+         onclick="selectPlayer('Jasprit Bumrah',this)">
 
         <div class="avatar">
 
@@ -303,61 +1168,901 @@ body{
 
         </div>
 
-        <h2>Jasprit Bumrah</h2>
+        <h2>
+            Jasprit Bumrah
+        </h2>
 
-        <p>Fast Bowler • India</p>
+        <p>
+            Fast Bowler • India
+        </p>
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================
+     USER INFORMATION
+========================= -->
+
+<div class="user-section">
+
+    <div class="section-title">
+
+        <h2>
+            👤 Tell Us About You
+        </h2>
+
+        <p>
+            Enter your information to create
+            your personal cricket practice plan.
+        </p>
+
+    </div>
+
+
+    <div class="form-grid">
+
+
+        <div class="input-box">
+
+            <label>
+                Your Name
+            </label>
+
+            <input
+                type="text"
+                id="userName"
+                placeholder="Enter your name">
+
+        </div>
+
+
+        <div class="input-box">
+
+            <label>
+                Your Age
+            </label>
+
+            <input
+                type="number"
+                id="userAge"
+                placeholder="Enter your age">
+
+        </div>
+
+
+        <div class="input-box">
+
+            <label>
+                Your Role
+            </label>
+
+            <select id="userRole">
+
+                <option value="">
+                    Select your role
+                </option>
+
+                <option>
+                    Batter
+                </option>
+
+                <option>
+                    Bowler
+                </option>
+
+                <option>
+                    All-Rounder
+                </option>
+
+                <option>
+                    Wicketkeeper
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="input-box">
+
+            <label>
+                Your Goal
+            </label>
+
+            <input
+                type="text"
+                id="userGoal"
+                placeholder="Example: Improve batting">
+
+        </div>
+
+    </div>
+
+
+    <button class="start-btn"
+            onclick="createPlan()">
+
+        🚀 Create My Cricket Plan
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     PLAYER JOURNEY
+========================= -->
+
+<div id="journey">
+
+    <h2 id="journeyTitle">
+        Player Journey
+    </h2>
+
+
+    <div id="journeyContent">
 
     </div>
 
 </div>
 
 
-<!-- Information -->
+<!-- =========================
+     PRACTICE SESSION
+========================= -->
 
-<div id="info">
+<div id="practice">
 
-    <h2>Choose a Player</h2>
+    <h2>
+        🏋️ Your Practice Session
+    </h2>
 
-    <p>
-        Click on any player above to select your cricket role model.
-    </p>
+
+    <div class="practice-grid">
+
+
+        <div class="practice-card">
+
+            <div class="icon">
+                🏏
+            </div>
+
+            <h3>
+                Batting
+            </h3>
+
+            <p id="battingPractice">
+                Practice your basic shots
+                and timing.
+            </p>
+
+        </div>
+
+
+        <div class="practice-card">
+
+            <div class="icon">
+                🎯
+            </div>
+
+            <h3>
+                Accuracy
+            </h3>
+
+            <p id="accuracyPractice">
+                Work on your control
+                and consistency.
+            </p>
+
+        </div>
+
+
+        <div class="practice-card">
+
+            <div class="icon">
+                🏃
+            </div>
+
+            <h3>
+                Fitness
+            </h3>
+
+            <p>
+                Warm up, sprint and improve
+                your cricket fitness.
+            </p>
+
+        </div>
+
+
+        <div class="practice-card">
+
+            <div class="icon">
+                🧤
+            </div>
+
+            <h3>
+                Fielding
+            </h3>
+
+            <p>
+                Practice catching,
+                throwing and movement.
+            </p>
+
+        </div>
+
+
+        <div class="practice-card">
+
+            <div class="icon">
+                🧠
+            </div>
+
+            <h3>
+                Game Awareness
+            </h3>
+
+            <p>
+                Learn to understand
+                match situations.
+            </p>
+
+        </div>
+
+
+        <div class="practice-card">
+
+            <div class="icon">
+                ⭐
+            </div>
+
+            <h3>
+                Daily Challenge
+            </h3>
+
+            <p id="dailyChallenge">
+                Complete 30 minutes
+                of focused practice.
+            </p>
+
+        </div>
+
+
+    </div>
 
 </div>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    🏏 Keep Practicing • Keep Improving • Keep Playing 🏏
+
+</footer>
+
+
+
 <script>
+
+
+/* =========================
+   PLAYER DATA
+========================= */
+
+const players = {
+
+
+    "Virat Kohli":{
+
+        journey:[
+
+            ["Early Journey",
+             "Virat Kohli developed his cricket skills from a young age and progressed through India's junior cricket system."],
+
+            ["Major Step",
+             "He captained India to the Under-19 Cricket World Cup title in 2008."],
+
+            ["International Career",
+             "He made his international debut for India in 2008 and developed into a leading international batter."],
+
+            ["Playing Style",
+             "His game is associated with strong fitness, intensity, running between wickets and aggressive batting."],
+
+            ["Practice Lesson",
+             "Focus on consistency, fitness, shot selection and mental discipline."]
+
+        ],
+
+        batting:
+            "Practice straight drives, cover drives, running between wickets and controlled chasing.",
+
+        accuracy:
+            "Work on placing the ball into gaps rather than only hitting with power.",
+
+        challenge:
+            "Complete 50 quality balls with controlled shot selection."
+
+    },
+
+
+    "Rohit Sharma":{
+
+        journey:[
+
+            ["Early Journey",
+             "Rohit Sharma progressed through domestic cricket before representing India at international level."],
+
+            ["International Debut",
+             "He made his international debut for India in 2007."],
+
+            ["Batting Development",
+             "He developed into a successful top-order batter and became known for timing and powerful stroke play."],
+
+            ["Leadership",
+             "He has also held important leadership roles in Indian cricket."],
+
+            ["Practice Lesson",
+             "Focus on timing, patience, shot selection and converting opportunities into big scores."]
+
+        ],
+
+        batting:
+            "Practice timing drills, pull shots, drives and controlled power hitting.",
+
+        accuracy:
+            "Practice hitting specific target areas instead of trying to hit every ball hard.",
+
+        challenge:
+            "Play 30 balls and focus on timing rather than maximum power."
+
+    },
+
+
+    "MS Dhoni":{
+
+        journey:[
+
+            ["Early Journey",
+             "MS Dhoni developed as a wicketkeeper-batter and played domestic cricket before reaching international cricket."],
+
+            ["International Debut",
+             "He made his international debut for India in 2004."],
+
+            ["Captaincy",
+             "He became one of India's major cricket leaders and captained India in multiple formats."],
+
+            ["Major Achievement",
+             "Under his captaincy, India won the 2007 T20 World Cup and 2011 ODI World Cup."],
+
+            ["Practice Lesson",
+             "Focus on calm decision-making, wicketkeeping skills, finishing and game awareness."]
+
+        ],
+
+        batting:
+            "Practice finishing drills, running between wickets and controlled power hitting.",
+
+        accuracy:
+            "Practice wicketkeeping catches and quick stump movements.",
+
+        challenge:
+            "Complete a finishing drill where you score runs from the final 12 balls."
+
+    },
+
+
+    "Chris Gayle":{
+
+        journey:[
+
+            ["Early Journey",
+             "Chris Gayle developed through Jamaican and West Indies cricket before becoming an international player."],
+
+            ["International Career",
+             "He represented the West Indies across international formats."],
+
+            ["Playing Style",
+             "He became widely known for powerful batting and aggressive six-hitting."],
+
+            ["T20 Cricket",
+             "He became one of the well-known power hitters of T20 cricket."],
+
+            ["Practice Lesson",
+             "Focus on balance, timing, power generation and controlled attacking shots."]
+
+        ],
+
+        batting:
+            "Practice power hitting only after developing good balance and timing.",
+
+        accuracy:
+            "Aim for specific zones while practicing attacking shots.",
+
+        challenge:
+            "Practice 20 controlled attacking shots while maintaining balance."
+
+    },
+
+
+    "AB de Villiers":{
+
+        journey:[
+
+            ["Early Journey",
+             "AB de Villiers developed as a versatile South African cricketer."],
+
+            ["International Career",
+             "He represented South Africa across Test, ODI and T20 cricket."],
+
+            ["Batting Style",
+             "He became known for innovative stroke play and the ability to score around the field."],
+
+            ["Versatility",
+             "His batting allowed him to adapt to different match situations."],
+
+            ["Practice Lesson",
+             "Focus on footwork, adaptability, timing and playing different areas of the field."]
+
+        ],
+
+        batting:
+            "Practice shots in different directions while maintaining balance.",
+
+        accuracy:
+            "Create target zones around the field and practice placing the ball.",
+
+        challenge:
+            "Score practice runs in at least five different target zones."
+
+    },
+
+
+    "Sachin Tendulkar":{
+
+        journey:[
+
+            ["Early Journey",
+             "Sachin Tendulkar showed strong cricket ability from a young age and progressed through Mumbai cricket."],
+
+            ["International Debut",
+             "He made his international debut for India in 1989."],
+
+            ["Long Career",
+             "He went on to have a long international career representing India."],
+
+            ["Major Achievement",
+             "He was part of India's 2011 Cricket World Cup winning team."],
+
+            ["Practice Lesson",
+             "Focus on technique, patience, repetition and building strong fundamentals."]
+
+        ],
+
+        batting:
+            "Practice basic batting technique, straight drives and defensive shots.",
+
+        accuracy:
+            "Repeat the same technique carefully until it becomes consistent.",
+
+        challenge:
+            "Practice 100 technically correct defensive and attacking shots."
+
+    },
+
+
+    "Jasprit Bumrah":{
+
+        journey:[
+
+            ["Early Journey",
+             "Jasprit Bumrah developed his cricket through domestic and T20 cricket before becoming an international player."],
+
+            ["International Career",
+             "He made his international debut for India in 2016."],
+
+            ["Bowling Style",
+             "He became known for his unusual bowling action, pace and accuracy."],
+
+            ["Death Bowling",
+             "His skill in controlling difficult phases of limited-overs matches became an important part of his game."],
+
+            ["Practice Lesson",
+             "Focus on bowling accuracy, run-up consistency and controlled variations."]
+
+        ],
+
+        batting:
+            "Practice basic batting only as a supporting skill.",
+
+        accuracy:
+            "Focus strongly on bowling at a specific target and maintaining your run-up.",
+
+        challenge:
+            "Bowl 30 deliveries at a selected target with consistent technique."
+
+    }
+
+};
+
+
+/* =========================
+   SELECT PLAYER
+========================= */
 
 function selectPlayer(name, card){
 
+
     /* Remove previous selection */
 
-    document.querySelectorAll(".player-card")
+    document
+        .querySelectorAll(".player-card")
         .forEach(function(item){
+
             item.classList.remove("selected");
+
         });
 
 
-    /* Select clicked card */
+    /* Select current player */
 
     card.classList.add("selected");
 
 
-    /* Change information */
+    /* Show journey */
 
-    document.getElementById("info").innerHTML =
+    showJourney(name);
 
-        "<h2>" + name + "</h2>" +
 
-        "<p>" +
-        "You selected " + name +
-        " as your cricket role model. " +
-        "Study their playing style, practice regularly " +
-        "and build your own cricket journey." +
-        "</p>";
+    /* Show practice */
+
+    showPractice(name);
+
+
+    /* Scroll to journey */
+
+    setTimeout(function(){
+
+        document
+            .getElementById("journey")
+            .scrollIntoView({
+                behavior:"smooth"
+            });
+
+    },300);
+
+}
+
+
+/* =========================
+   SHOW JOURNEY
+========================= */
+
+function showJourney(name){
+
+
+    const data =
+        players[name];
+
+
+    document
+        .getElementById("journey")
+        .style.display="block";
+
+
+    document
+        .getElementById("journeyTitle")
+        .innerText =
+            name + " - Cricket Journey";
+
+
+    let html="";
+
+
+    data.journey.forEach(function(item){
+
+        html +=
+
+        `<div class="journey-box">
+
+            <h3>
+                ${item[0]}
+            </h3>
+
+            <p>
+                ${item[1]}
+            </p>
+
+        </div>`;
+
+    });
+
+
+    document
+        .getElementById("journeyContent")
+        .innerHTML=html;
+
+}
+
+
+/* =========================
+   SHOW PRACTICE
+========================= */
+
+function showPractice(name){
+
+
+    const data =
+        players[name];
+
+
+    document
+        .getElementById("practice")
+        .style.display="block";
+
+
+    document
+        .getElementById("battingPractice")
+        .innerText =
+            data.batting;
+
+
+    document
+        .getElementById("accuracyPractice")
+        .innerText =
+            data.accuracy;
+
+
+    document
+        .getElementById("dailyChallenge")
+        .innerText =
+            data.challenge;
+
+}
+
+
+/* =========================
+   USER PLAN
+========================= */
+
+function createPlan(){
+
+
+    const name =
+        document
+        .getElementById("userName")
+        .value;
+
+
+    const age =
+        document
+        .getElementById("userAge")
+        .value;
+
+
+    const role =
+        document
+        .getElementById("userRole")
+        .value;
+
+
+    const goal =
+        document
+        .getElementById("userGoal")
+        .value;
+
+
+    if(
+        name==="" ||
+        age==="" ||
+        role==="" ||
+        goal===""
+    ){
+
+        alert(
+            "Please fill all your information first!"
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Great " +
+        name +
+        "! Your cricket profile has been created."
+    );
+
+
+    document
+        .querySelector(".user-section")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================
+   BAT ANIMATION
+========================= */
+
+function batAnimation(){
+
+
+    showAnimation(
+        "🏏 PERFECT SHOT!"
+    );
+
+
+    for(
+        let i=0;
+        i<5;
+        i++
+    ){
+
+        createFlyingBall();
+
+    }
+
+}
+
+
+/* =========================
+   BALL ANIMATION
+========================= */
+
+function ballAnimation(){
+
+
+    showAnimation(
+        "🔴 FAST DELIVERY!"
+    );
+
+
+    for(
+        let i=0;
+        i<3;
+        i++
+    ){
+
+        createFlyingBall();
+
+    }
+
+}
+
+
+/* =========================
+   WICKET ANIMATION
+========================= */
+
+function wicketAnimation(){
+
+
+    showAnimation(
+        "🎯 WICKET!"
+    );
+
+
+    document
+        .querySelector(".wicket")
+        .animate(
+
+            [
+
+                {
+                    transform:
+                    "rotate(0deg)"
+                },
+
+                {
+                    transform:
+                    "rotate(-25deg)"
+                },
+
+                {
+                    transform:
+                    "rotate(25deg)"
+                },
+
+                {
+                    transform:
+                    "rotate(0deg)"
+                }
+
+            ],
+
+            {
+
+                duration:800,
+
+                iterations:2
+
+            }
+
+        );
+
+}
+
+
+/* =========================
+   SHOW MESSAGE
+========================= */
+
+function showAnimation(text){
+
+
+    const message =
+        document
+        .getElementById(
+            "animationMessage"
+        );
+
+
+    message.innerText=text;
+
+
+    message.classList.remove("show");
+
+
+    void message.offsetWidth;
+
+
+    message.classList.add("show");
+
+}
+
+
+/* =========================
+   FLYING BALL
+========================= */
+
+function createFlyingBall(){
+
+
+    const ball =
+        document.createElement("div");
+
+
+    ball.innerText="🔴";
+
+
+    ball.className=
+        "flying-ball";
+
+
+    ball.style.left=
+        Math.random()*60 + 20 + "%";
+
+
+    ball.style.top=
+        Math.random()*40 + 30 + "%";
+
+
+    document
+        .body
+        .appendChild(ball);
+
+
+    setTimeout(function(){
+
+        ball.remove();
+
+    },1000);
 
 }
 
 </script>
 
+
 </body>
+
 </html>
