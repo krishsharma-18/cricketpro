@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,12 +11,11 @@
 
 <title>Cricket Role Model</title>
 
-
 <style>
 
-/* =========================
+/* =========================================================
    BASIC RESET
-========================= */
+========================================================= */
 
 *{
     margin:0;
@@ -23,6 +23,9 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
 
 body{
 
@@ -41,22 +44,97 @@ body{
         );
 
     overflow-x:hidden;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    width:100%;
+
+    padding:15px 30px;
+
+    background:
+        rgba(255,255,255,0.92);
+
+    backdrop-filter:blur(10px);
+
+    border-bottom:
+        2px solid #d5eaf7;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,100,200,0.08);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#006dcc;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:25px;
+
+    list-style:none;
+
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#234b67;
+
+    font-weight:bold;
+
+    transition:0.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:#008cff;
+
+    transform:translateY(-2px);
 
 }
 
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .header{
 
     text-align:center;
 
-    padding:50px 20px 25px;
+    padding:60px 20px 30px;
 
 }
-
 
 .header h1{
 
@@ -67,10 +145,25 @@ body{
     margin-bottom:12px;
 
     text-shadow:
-        0 4px 15px rgba(0,100,200,0.2);
+        0 4px 15px
+        rgba(0,100,200,0.2);
+
+    animation:
+        titleGlow 3s ease-in-out infinite;
 
 }
 
+@keyframes titleGlow{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.03);
+    }
+
+}
 
 .header p{
 
@@ -81,15 +174,15 @@ body{
 }
 
 
-/* =========================
+/* =========================================================
    FLOATING CRICKET OBJECTS
-========================= */
+========================================================= */
 
 .cricket-object{
 
     position:fixed;
 
-    z-index:2;
+    z-index:20;
 
     cursor:pointer;
 
@@ -97,108 +190,669 @@ body{
 
     transition:0.3s;
 
+    filter:
+        drop-shadow(
+            0 5px 8px
+            rgba(0,0,0,0.15)
+        );
+
 }
 
 
-/* Bat */
+/* -------- BAT OBJECTS -------- */
 
 .bat{
 
-    font-size:65px;
+    font-size:55px;
 
-    left:20px;
+}
 
-    bottom:80px;
+.bat1{
+
+    left:2%;
+
+    bottom:12%;
 
     animation:
-        floatBat 4s ease-in-out infinite;
+        batFloat1 4s ease-in-out infinite;
 
 }
 
+.bat2{
 
-@keyframes floatBat{
+    left:8%;
 
-    0%,100%{
-        transform:translateY(0) rotate(-15deg);
-    }
-
-    50%{
-        transform:translateY(-25px) rotate(10deg);
-    }
-
-}
-
-
-/* Ball */
-
-.ball{
+    top:28%;
 
     font-size:45px;
 
-    right:35px;
+    animation:
+        batFloat2 5s ease-in-out infinite;
 
-    top:35%;
+}
+
+.bat3{
+
+    right:7%;
+
+    bottom:25%;
+
+    font-size:50px;
 
     animation:
-        floatBall 3s ease-in-out infinite;
+        batFloat3 4.5s ease-in-out infinite;
 
 }
 
 
-@keyframes floatBall{
+/* -------- BALL OBJECTS -------- */
 
-    0%,100%{
-        transform:translateY(0);
-    }
+.ball{
 
-    50%{
-        transform:translateY(-35px);
-    }
+    font-size:38px;
+
+}
+
+.ball1{
+
+    right:3%;
+
+    top:30%;
+
+    animation:
+        ballFloat1 3s ease-in-out infinite;
+
+}
+
+.ball2{
+
+    right:12%;
+
+    top:65%;
+
+    font-size:32px;
+
+    animation:
+        ballFloat2 4s ease-in-out infinite;
+
+}
+
+.ball3{
+
+    left:18%;
+
+    bottom:30%;
+
+    font-size:30px;
+
+    animation:
+        ballFloat3 3.5s ease-in-out infinite;
+
+}
+
+.ball4{
+
+    right:20%;
+
+    top:15%;
+
+    font-size:28px;
+
+    animation:
+        ballFloat4 4.2s ease-in-out infinite;
 
 }
 
 
-/* Wicket */
+/* -------- WICKET OBJECTS -------- */
 
 .wicket{
 
-    font-size:55px;
+    font-size:48px;
 
-    right:25px;
+}
 
-    bottom:70px;
+.wicket1{
+
+    right:2%;
+
+    bottom:8%;
 
     animation:
-        floatWicket 4s ease-in-out infinite;
+        wicketFloat1 4s ease-in-out infinite;
+
+}
+
+.wicket2{
+
+    left:4%;
+
+    top:55%;
+
+    font-size:42px;
+
+    animation:
+        wicketFloat2 5s ease-in-out infinite;
+
+}
+
+.wicket3{
+
+    right:25%;
+
+    bottom:8%;
+
+    font-size:40px;
+
+    animation:
+        wicketFloat3 4.5s ease-in-out infinite;
 
 }
 
 
-@keyframes floatWicket{
+/* =========================================================
+   OBJECT ANIMATIONS
+========================================================= */
+
+@keyframes batFloat1{
 
     0%,100%{
-        transform:rotate(-5deg);
+        transform:
+            translateY(0)
+            rotate(-15deg);
     }
 
     50%{
-        transform:rotate(5deg);
+        transform:
+            translateY(-25px)
+            rotate(15deg);
+    }
+
+}
+
+@keyframes batFloat2{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(10deg);
+    }
+
+    50%{
+        transform:
+            translateY(-30px)
+            rotate(-15deg);
+    }
+
+}
+
+@keyframes batFloat3{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-10deg);
+    }
+
+    50%{
+        transform:
+            translateY(-20px)
+            rotate(20deg);
+    }
+
+}
+
+@keyframes ballFloat1{
+
+    0%,100%{
+        transform:
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translateY(-35px)
+            rotate(360deg);
+    }
+
+}
+
+@keyframes ballFloat2{
+
+    0%,100%{
+        transform:
+            translate(0,0)
+            rotate(0);
+    }
+
+    50%{
+        transform:
+            translate(25px,-30px)
+            rotate(360deg);
+    }
+
+}
+
+@keyframes ballFloat3{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+
+    50%{
+        transform:
+            translateY(-25px)
+            rotate(-360deg);
+    }
+
+}
+
+@keyframes ballFloat4{
+
+    0%,100%{
+        transform:
+            translate(0,0);
+    }
+
+    50%{
+        transform:
+            translate(-25px,25px)
+            rotate(360deg);
+    }
+
+}
+
+@keyframes wicketFloat1{
+
+    0%,100%{
+        transform:
+            rotate(-5deg);
+    }
+
+    50%{
+        transform:
+            rotate(8deg)
+            translateY(-15px);
+    }
+
+}
+
+@keyframes wicketFloat2{
+
+    0%,100%{
+        transform:
+            rotate(5deg);
+    }
+
+    50%{
+        transform:
+            rotate(-8deg)
+            translateY(-20px);
+    }
+
+}
+
+@keyframes wicketFloat3{
+
+    0%,100%{
+        transform:
+            rotate(-8deg);
+    }
+
+    50%{
+        transform:
+            rotate(8deg)
+            translateY(-15px);
     }
 
 }
 
 
-/* Hover */
+/* HOVER */
 
 .cricket-object:hover{
 
-    transform:scale(1.2);
+    transform:
+        scale(1.3);
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(0,140,255,0.7)
+        );
 
 }
 
 
-/* =========================
+/* =========================================================
+   HERO INFORMATION
+========================================================= */
+
+.hero-box{
+
+    width:90%;
+
+    max-width:1000px;
+
+    margin:20px auto 40px;
+
+    padding:35px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #eef9ff
+        );
+
+    border-radius:30px;
+
+    border:
+        2px solid #d5eaf7;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,100,200,0.12);
+
+}
+
+.hero-box h2{
+
+    color:#006dcc;
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
+}
+
+.hero-box p{
+
+    color:#52748c;
+
+    line-height:1.7;
+
+    font-size:17px;
+
+}
+
+
+/* =========================================================
+   SECTION COMMON
+========================================================= */
+
+.info-section{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:70px auto;
+
+    padding:40px;
+
+    background:white;
+
+    border-radius:25px;
+
+    border:
+        2px solid #d5eaf7;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,100,200,0.12);
+
+}
+
+.info-title{
+
+    text-align:center;
+
+    color:#006dcc;
+
+    font-size:34px;
+
+    margin-bottom:12px;
+
+}
+
+.info-subtitle{
+
+    text-align:center;
+
+    color:#52748c;
+
+    margin-bottom:30px;
+
+}
+
+
+/* =========================================================
+   ABOUT CRICKET
+========================================================= */
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:25px;
+
+}
+
+.about-card{
+
+    padding:25px;
+
+    background:#eef9ff;
+
+    border-radius:18px;
+
+    border-left:
+        5px solid #008cff;
+
+    transition:0.3s;
+
+}
+
+.about-card:hover{
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,100,200,0.12);
+
+}
+
+.about-card h3{
+
+    color:#075a94;
+
+    margin-bottom:10px;
+
+    font-size:22px;
+
+}
+
+.about-card p{
+
+    color:#456b82;
+
+    line-height:1.7;
+
+}
+
+
+/* =========================================================
+   CRICKET FEATURES
+========================================================= */
+
+.features-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+.feature-card{
+
+    text-align:center;
+
+    padding:28px 20px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eef9ff,
+            #ffffff
+        );
+
+    border:
+        1px solid #cdeafa;
+
+    transition:0.3s;
+
+}
+
+.feature-card:hover{
+
+    transform:
+        translateY(-8px)
+        scale(1.02);
+
+    box-shadow:
+        0 15px 30px
+        rgba(0,100,200,0.15);
+
+}
+
+.feature-icon{
+
+    font-size:50px;
+
+    margin-bottom:15px;
+
+}
+
+.feature-card h3{
+
+    color:#075a94;
+
+    margin-bottom:10px;
+
+}
+
+.feature-card p{
+
+    color:#52748c;
+
+    line-height:1.5;
+
+}
+
+
+/* =========================================================
+   GROUNDS
+========================================================= */
+
+.grounds-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+.ground-card{
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#f7fcff;
+
+    border:
+        2px solid #d5eaf7;
+
+    transition:0.35s;
+
+}
+
+.ground-card:hover{
+
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 15px 30px
+        rgba(0,100,200,0.18);
+
+}
+
+.ground-image{
+
+    height:150px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:65px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #c9f0ff,
+            #eefaff
+        );
+
+}
+
+.ground-content{
+
+    padding:20px;
+
+}
+
+.ground-content h3{
+
+    color:#075a94;
+
+    margin-bottom:8px;
+
+}
+
+.ground-content p{
+
+    color:#52748c;
+
+    line-height:1.5;
+
+}
+
+
+/* =========================================================
    PLAYERS
-========================= */
+========================================================= */
 
 .players{
 
@@ -218,16 +872,17 @@ body{
 }
 
 
-/* =========================
+/* =========================================================
    PLAYER CARD
-========================= */
+========================================================= */
 
 .player-card{
 
     background:
         rgba(255,255,255,0.95);
 
-    border:2px solid #d5eaf7;
+    border:
+        2px solid #d5eaf7;
 
     border-radius:22px;
 
@@ -245,7 +900,6 @@ body{
 
 }
 
-
 .player-card:hover{
 
     transform:
@@ -259,12 +913,10 @@ body{
 
 }
 
-
-/* Selected card */
-
 .player-card.selected{
 
-    border:3px solid #008cff;
+    border:
+        3px solid #008cff;
 
     box-shadow:
         0 0 30px
@@ -276,9 +928,9 @@ body{
 }
 
 
-/* =========================
+/* =========================================================
    PLAYER IMAGE
-========================= */
+========================================================= */
 
 .avatar{
 
@@ -303,7 +955,6 @@ body{
 
 }
 
-
 .avatar img{
 
     width:100%;
@@ -318,18 +969,18 @@ body{
 
 }
 
-
 .player-card:hover
 .avatar img{
 
-    transform:scale(1.08);
+    transform:
+        scale(1.08);
 
 }
 
 
-/* =========================
+/* =========================================================
    PLAYER NAME
-========================= */
+========================================================= */
 
 .player-card h2{
 
@@ -340,7 +991,6 @@ body{
     color:#123b5d;
 
 }
-
 
 .player-card p{
 
@@ -353,9 +1003,9 @@ body{
 }
 
 
-/* =========================
+/* =========================================================
    USER INFORMATION
-========================= */
+========================================================= */
 
 .user-section{
 
@@ -380,7 +1030,6 @@ body{
 
 }
 
-
 .section-title{
 
     text-align:center;
@@ -388,7 +1037,6 @@ body{
     margin-bottom:25px;
 
 }
-
 
 .section-title h2{
 
@@ -400,7 +1048,6 @@ body{
 
 }
 
-
 .section-title p{
 
     color:#52748c;
@@ -408,7 +1055,7 @@ body{
 }
 
 
-/* Form */
+/* FORM */
 
 .form-grid{
 
@@ -421,7 +1068,6 @@ body{
 
 }
 
-
 .input-box{
 
     display:flex;
@@ -429,7 +1075,6 @@ body{
     flex-direction:column;
 
 }
-
 
 .input-box label{
 
@@ -440,7 +1085,6 @@ body{
     margin-bottom:8px;
 
 }
-
 
 .input-box input,
 .input-box select{
@@ -460,7 +1104,6 @@ body{
 
 }
 
-
 .input-box input:focus,
 .input-box select:focus{
 
@@ -473,7 +1116,7 @@ body{
 }
 
 
-/* Button */
+/* BUTTON */
 
 .start-btn{
 
@@ -506,10 +1149,10 @@ body{
 
 }
 
-
 .start-btn:hover{
 
-    transform:scale(1.05);
+    transform:
+        scale(1.05);
 
     box-shadow:
         0 8px 20px
@@ -518,9 +1161,9 @@ body{
 }
 
 
-/* =========================
+/* =========================================================
    JOURNEY
-========================= */
+========================================================= */
 
 #journey{
 
@@ -550,7 +1193,6 @@ body{
 
 }
 
-
 @keyframes slideUp{
 
     from{
@@ -573,7 +1215,6 @@ body{
 
 }
 
-
 #journey h2{
 
     color:#006dcc;
@@ -585,7 +1226,6 @@ body{
     font-size:32px;
 
 }
-
 
 .journey-box{
 
@@ -602,7 +1242,6 @@ body{
 
 }
 
-
 .journey-box h3{
 
     color:#075a94;
@@ -610,7 +1249,6 @@ body{
     margin-bottom:8px;
 
 }
-
 
 .journey-box p{
 
@@ -621,9 +1259,9 @@ body{
 }
 
 
-/* =========================
+/* =========================================================
    PRACTICE
-========================= */
+========================================================= */
 
 #practice{
 
@@ -650,7 +1288,6 @@ body{
 
 }
 
-
 #practice h2{
 
     color:#006dcc;
@@ -663,7 +1300,6 @@ body{
 
 }
 
-
 .practice-grid{
 
     display:grid;
@@ -674,7 +1310,6 @@ body{
     gap:18px;
 
 }
-
 
 .practice-card{
 
@@ -693,7 +1328,6 @@ body{
 
 }
 
-
 .practice-card:hover{
 
     transform:
@@ -705,7 +1339,6 @@ body{
 
 }
 
-
 .practice-card .icon{
 
     font-size:40px;
@@ -714,7 +1347,6 @@ body{
 
 }
 
-
 .practice-card h3{
 
     color:#075a94;
@@ -722,7 +1354,6 @@ body{
     margin-bottom:8px;
 
 }
-
 
 .practice-card p{
 
@@ -733,9 +1364,9 @@ body{
 }
 
 
-/* =========================
+/* =========================================================
    ANIMATION MESSAGE
-========================= */
+========================================================= */
 
 #animationMessage{
 
@@ -766,8 +1397,9 @@ body{
 
     pointer-events:none;
 
-}
+    text-align:center;
 
+}
 
 #animationMessage.show{
 
@@ -775,7 +1407,6 @@ body{
         actionAnimation 1.2s ease;
 
 }
-
 
 @keyframes actionAnimation{
 
@@ -815,9 +1446,9 @@ body{
 }
 
 
-/* =========================
+/* =========================================================
    FLYING BALL
-========================= */
+========================================================= */
 
 .flying-ball{
 
@@ -834,14 +1465,14 @@ body{
 
 }
 
-
 @keyframes flyBall{
 
     0%{
 
         transform:
             translate(0,0)
-            rotate(0deg);
+            rotate(0deg)
+            scale(1);
 
         opacity:1;
 
@@ -850,8 +1481,12 @@ body{
     100%{
 
         transform:
-            translate(350px,-250px)
-            rotate(720deg);
+            translate(
+                calc(200px + 150px * var(--randomX)),
+                calc(-200px - 100px * var(--randomY))
+            )
+            rotate(720deg)
+            scale(0.2);
 
         opacity:0;
 
@@ -860,26 +1495,88 @@ body{
 }
 
 
-/* =========================
+/* =========================================================
+   SPECIAL EFFECTS
+========================================================= */
+
+.spark{
+
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:95;
+
+    font-size:25px;
+
+    animation:
+        sparkAnimation 1s ease-out forwards;
+
+}
+
+@keyframes sparkAnimation{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0.2)
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
 
     text-align:center;
 
-    padding:25px;
+    padding:30px;
 
     color:#52748c;
 
     background:#e8f6ff;
 
+    margin-top:50px;
+
+}
+
+.footer-title{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#006dcc;
+
+    margin-bottom:8px;
+
 }
 
 
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
 @media(max-width:900px){
 
@@ -897,10 +1594,47 @@ footer{
 
     }
 
+    .features-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .grounds-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .nav-links{
+
+        gap:12px;
+
+    }
+
 }
 
-
 @media(max-width:600px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:12px;
+
+    }
+
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        font-size:14px;
+
+    }
 
     .players{
 
@@ -920,33 +1654,42 @@ footer{
 
     }
 
+    .features-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .grounds-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .about-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
     .header h1{
 
         font-size:32px;
 
     }
 
-    .bat{
+    .info-section{
 
-        font-size:45px;
-
-        left:5px;
+        padding:25px 18px;
 
     }
 
-    .ball{
+    .bat2,
+    .ball3,
+    .ball4,
+    .wicket2{
 
-        font-size:35px;
-
-        right:10px;
-
-    }
-
-    .wicket{
-
-        font-size:40px;
-
-        right:5px;
+        display:none;
 
     }
 
@@ -960,31 +1703,101 @@ footer{
 <body>
 
 
-<!-- =========================
-     FLOATING OBJECTS
-========================= -->
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-<div class="cricket-object bat"
-     onclick="batAnimation()">
+<nav class="navbar">
 
+    <div class="logo">
+        🏏 Cricket World
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#about">About Cricket</a>
+        </li>
+
+        <li>
+            <a href="#features">Features</a>
+        </li>
+
+        <li>
+            <a href="#grounds">Grounds</a>
+        </li>
+
+        <li>
+            <a href="#players">Players</a>
+        </li>
+
+        <li>
+            <a href="#profile">My Plan</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================================================
+     FLOATING CRICKET OBJECTS
+========================================================= -->
+
+<div class="cricket-object bat bat1"
+     onclick="batAnimation(1)">
     🏏
+</div>
 
+<div class="cricket-object bat bat2"
+     onclick="batAnimation(2)">
+    🏏
+</div>
+
+<div class="cricket-object bat bat3"
+     onclick="batAnimation(3)">
+    🏏
 </div>
 
 
-<div class="cricket-object ball"
-     onclick="ballAnimation()">
-
+<div class="cricket-object ball ball1"
+     onclick="ballAnimation(1)">
     🔴
+</div>
 
+<div class="cricket-object ball ball2"
+     onclick="ballAnimation(2)">
+    🔴
+</div>
+
+<div class="cricket-object ball ball3"
+     onclick="ballAnimation(3)">
+    🔴
+</div>
+
+<div class="cricket-object ball ball4"
+     onclick="ballAnimation(4)">
+    🔴
 </div>
 
 
-<div class="cricket-object wicket"
-     onclick="wicketAnimation()">
-
+<div class="cricket-object wicket wicket1"
+     onclick="wicketAnimation(1)">
     🏏
+</div>
 
+<div class="cricket-object wicket wicket2"
+     onclick="wicketAnimation(2)">
+    🏏
+</div>
+
+<div class="cricket-object wicket wicket3"
+     onclick="wicketAnimation(3)">
+    🏏
 </div>
 
 
@@ -993,198 +1806,658 @@ footer{
 <div id="animationMessage"></div>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- =========================================================
+     HOME
+========================================================= -->
 
-<div class="header">
+<section id="home">
 
-    <h1>
-        🏏 PLAY LIKE YOUR HERO
-    </h1>
+    <div class="header">
 
-    <p>
-        Select a player to explore their journey,
-        practice path and cricket style.
+        <h1>
+            🏏 PLAY LIKE YOUR HERO
+        </h1>
+
+        <p>
+            Select a player to explore their journey,
+            practice path and cricket style.
+        </p>
+
+    </div>
+
+
+    <div class="hero-box">
+
+        <h2>
+            🌟 Welcome to the Cricket World
+        </h2>
+
+        <p>
+            Cricket is more than just a sport.
+            It combines skill, teamwork, fitness,
+            strategy, patience and passion.
+            Explore legendary players, learn about
+            cricket, discover famous grounds and
+            create your own practice journey.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT CRICKET
+========================================================= -->
+
+<section id="about"
+         class="info-section">
+
+    <h2 class="info-title">
+        📖 About Cricket
+    </h2>
+
+    <p class="info-subtitle">
+        Learn the basics of one of the world's most popular sports.
     </p>
 
-</div>
+
+    <div class="about-grid">
 
 
-<!-- =========================
+        <div class="about-card">
+
+            <h3>
+                🏏 What is Cricket?
+            </h3>
+
+            <p>
+                Cricket is a bat-and-ball team sport.
+                Two teams play against each other,
+                with one team batting and the other
+                team bowling and fielding.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>
+                👥 Teams
+            </h3>
+
+            <p>
+                A traditional cricket team has
+                eleven players. Players may have
+                different responsibilities such as
+                batting, bowling, wicketkeeping and
+                fielding.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>
+                🎯 Main Objective
+            </h3>
+
+            <p>
+                The batting team tries to score runs
+                while the bowling and fielding team
+                tries to restrict runs and dismiss
+                batters.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>
+                🌍 Different Formats
+            </h3>
+
+            <p>
+                International cricket is played in
+                formats including Test cricket,
+                One Day Internationals and Twenty20
+                cricket.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>
+                🧠 Strategy
+            </h3>
+
+            <p>
+                Cricket requires decision-making,
+                shot selection, bowling plans,
+                field placement and understanding
+                of match situations.
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>
+                ❤️ Spirit of Cricket
+            </h3>
+
+            <p>
+                Cricket also emphasizes teamwork,
+                discipline, respect for opponents
+                and playing fairly.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURES OF CRICKET
+========================================================= -->
+
+<section id="features"
+         class="info-section">
+
+    <h2 class="info-title">
+        ⭐ Features of Cricket
+    </h2>
+
+    <p class="info-subtitle">
+        Explore the different skills that make cricket interesting.
+    </p>
+
+
+    <div class="features-grid">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🏏
+            </div>
+
+            <h3>
+                Batting
+            </h3>
+
+            <p>
+                Develop timing, footwork,
+                shot selection and control.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🎯
+            </div>
+
+            <h3>
+                Bowling
+            </h3>
+
+            <p>
+                Work on accuracy, pace,
+                swing, spin and variations.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🧤
+            </div>
+
+            <h3>
+                Wicketkeeping
+            </h3>
+
+            <p>
+                Catching, stumping,
+                positioning and quick reactions.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🏃
+            </div>
+
+            <h3>
+                Fielding
+            </h3>
+
+            <p>
+                Improve catching, throwing,
+                agility and movement.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🧠
+            </div>
+
+            <h3>
+                Game Awareness
+            </h3>
+
+            <p>
+                Understand the score,
+                situation and match strategy.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💪
+            </div>
+
+            <h3>
+                Fitness
+            </h3>
+
+            <p>
+                Fitness supports running,
+                movement and performance.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CRICKET GROUNDS
+========================================================= -->
+
+<section id="grounds"
+         class="info-section">
+
+    <h2 class="info-title">
+        🌍 Famous Cricket Grounds
+    </h2>
+
+    <p class="info-subtitle">
+        Explore some famous cricket venues around the world.
+    </p>
+
+
+    <div class="grounds-grid">
+
+
+        <div class="ground-card">
+
+            <div class="ground-image">
+                🏟️
+            </div>
+
+            <div class="ground-content">
+
+                <h3>
+                    Narendra Modi Stadium
+                </h3>
+
+                <p>
+                    Ahmedabad, India.
+                    One of the world's major cricket
+                    stadiums and a prominent venue
+                    for international cricket.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="ground-card">
+
+            <div class="ground-image">
+                🏟️
+            </div>
+
+            <div class="ground-content">
+
+                <h3>
+                    Lord's Cricket Ground
+                </h3>
+
+                <p>
+                    London, England.
+                    A historic cricket ground commonly
+                    associated with the history of
+                    international cricket.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="ground-card">
+
+            <div class="ground-image">
+                🏟️
+            </div>
+
+            <div class="ground-content">
+
+                <h3>
+                    Melbourne Cricket Ground
+                </h3>
+
+                <p>
+                    Melbourne, Australia.
+                    A major sporting venue and an
+                    important cricket stadium.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="ground-card">
+
+            <div class="ground-image">
+                🏟️
+            </div>
+
+            <div class="ground-content">
+
+                <h3>
+                    Eden Gardens
+                </h3>
+
+                <p>
+                    Kolkata, India.
+                    A historic Indian cricket venue
+                    known for major domestic and
+                    international matches.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="ground-card">
+
+            <div class="ground-image">
+                🏟️
+            </div>
+
+            <div class="ground-content">
+
+                <h3>
+                    Wankhede Stadium
+                </h3>
+
+                <p>
+                    Mumbai, India.
+                    A well-known international cricket
+                    stadium located near Mumbai's
+                    famous waterfront.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="ground-card">
+
+            <div class="ground-image">
+                🏟️
+            </div>
+
+            <div class="ground-content">
+
+                <h3>
+                    Newlands Cricket Ground
+                </h3>
+
+                <p>
+                    Cape Town, South Africa.
+                    A famous cricket venue with a
+                    distinctive mountain backdrop.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
      PLAYER SECTION
-========================= -->
+========================================================= -->
 
-<div class="players">
+<section id="players">
 
+    <div class="header">
 
-    <!-- VIRAT KOHLI -->
-
-    <div class="player-card"
-         onclick="selectPlayer('Virat Kohli',this)">
-
-        <div class="avatar">
-
-            <img src="Virat Kohli.png"
-                 alt="Virat Kohli">
-
-        </div>
-
-        <h2>
-            Virat Kohli
-        </h2>
+        <h1>
+            ⭐ Cricket Role Models
+        </h1>
 
         <p>
-            Batter • India
+            Select your favourite player and
+            explore their cricket journey.
         </p>
 
     </div>
 
 
-    <!-- ROHIT SHARMA -->
-
-    <div class="player-card"
-         onclick="selectPlayer('Rohit Sharma',this)">
-
-        <div class="avatar">
-
-            <img src="Rohit Sharma.png"
-                 alt="Rohit Sharma">
-
-        </div>
-
-        <h2>
-            Rohit Sharma
-        </h2>
-
-        <p>
-            Batter • India
-        </p>
-
-    </div>
+    <div class="players">
 
 
-    <!-- MS DHONI -->
+        <!-- VIRAT KOHLI -->
 
-    <div class="player-card"
-         onclick="selectPlayer('MS Dhoni',this)">
+        <div class="player-card"
+             onclick="selectPlayer('Virat Kohli',this)">
 
-        <div class="avatar">
+            <div class="avatar">
 
-            <img src="MS Dhoni.png"
-                 alt="MS Dhoni">
+                <img src="Virat Kohli.png"
+                     alt="Virat Kohli">
+
+            </div>
+
+            <h2>
+                Virat Kohli
+            </h2>
+
+            <p>
+                Batter • India
+            </p>
 
         </div>
 
-        <h2>
-            MS Dhoni
-        </h2>
 
-        <p>
-            Wicketkeeper • India
-        </p>
+        <!-- ROHIT SHARMA -->
 
-    </div>
+        <div class="player-card"
+             onclick="selectPlayer('Rohit Sharma',this)">
 
+            <div class="avatar">
 
-    <!-- CHRIS GAYLE -->
+                <img src="Rohit Sharma.png"
+                     alt="Rohit Sharma">
 
-    <div class="player-card"
-         onclick="selectPlayer('Chris Gayle',this)">
+            </div>
 
-        <div class="avatar">
+            <h2>
+                Rohit Sharma
+            </h2>
 
-            <img src="Chris Gayle.png"
-                 alt="Chris Gayle">
-
-        </div>
-
-        <h2>
-            Chris Gayle
-        </h2>
-
-        <p>
-            Batter • West Indies
-        </p>
-
-    </div>
-
-
-    <!-- AB DE VILLIERS -->
-
-    <div class="player-card"
-         onclick="selectPlayer('AB de Villiers',this)">
-
-        <div class="avatar">
-
-            <img src="AB de Villiers.png"
-                 alt="AB de Villiers">
+            <p>
+                Batter • India
+            </p>
 
         </div>
 
-        <h2>
-            AB de Villiers
-        </h2>
 
-        <p>
-            Batter • South Africa
-        </p>
+        <!-- MS DHONI -->
 
-    </div>
+        <div class="player-card"
+             onclick="selectPlayer('MS Dhoni',this)">
 
+            <div class="avatar">
 
-    <!-- SACHIN TENDULKAR -->
+                <img src="MS Dhoni.png"
+                     alt="MS Dhoni">
 
-    <div class="player-card"
-         onclick="selectPlayer('Sachin Tendulkar',this)">
+            </div>
 
-        <div class="avatar">
+            <h2>
+                MS Dhoni
+            </h2>
 
-            <img src="Sachin Tendulkar.png"
-                 alt="Sachin Tendulkar">
-
-        </div>
-
-        <h2>
-            Sachin Tendulkar
-        </h2>
-
-        <p>
-            Batter • India
-        </p>
-
-    </div>
-
-
-    <!-- JASPRIT BUMRAH -->
-
-    <div class="player-card"
-         onclick="selectPlayer('Jasprit Bumrah',this)">
-
-        <div class="avatar">
-
-            <img src="Jasprit Bumrah.png"
-                 alt="Jasprit Bumrah">
+            <p>
+                Wicketkeeper • India
+            </p>
 
         </div>
 
-        <h2>
-            Jasprit Bumrah
-        </h2>
 
-        <p>
-            Fast Bowler • India
-        </p>
+        <!-- CHRIS GAYLE -->
+
+        <div class="player-card"
+             onclick="selectPlayer('Chris Gayle',this)">
+
+            <div class="avatar">
+
+                <img src="Chris Gayle.png"
+                     alt="Chris Gayle">
+
+            </div>
+
+            <h2>
+                Chris Gayle
+            </h2>
+
+            <p>
+                Batter • West Indies
+            </p>
+
+        </div>
+
+
+        <!-- AB DE VILLIERS -->
+
+        <div class="player-card"
+             onclick="selectPlayer('AB de Villiers',this)">
+
+            <div class="avatar">
+
+                <img src="AB de Villiers.png"
+                     alt="AB de Villiers">
+
+            </div>
+
+            <h2>
+                AB de Villiers
+            </h2>
+
+            <p>
+                Batter • South Africa
+            </p>
+
+        </div>
+
+
+        <!-- SACHIN TENDULKAR -->
+
+        <div class="player-card"
+             onclick="selectPlayer('Sachin Tendulkar',this)">
+
+            <div class="avatar">
+
+                <img src="Sachin Tendulkar.png"
+                     alt="Sachin Tendulkar">
+
+            </div>
+
+            <h2>
+                Sachin Tendulkar
+            </h2>
+
+            <p>
+                Batter • India
+            </p>
+
+        </div>
+
+
+        <!-- JASPRIT BUMRAH -->
+
+        <div class="player-card"
+             onclick="selectPlayer('Jasprit Bumrah',this)">
+
+            <div class="avatar">
+
+                <img src="Jasprit Bumrah.png"
+                     alt="Jasprit Bumrah">
+
+            </div>
+
+            <h2>
+                Jasprit Bumrah
+            </h2>
+
+            <p>
+                Fast Bowler • India
+            </p>
+
+        </div>
+
 
     </div>
 
+</section>
 
-</div>
 
-
-<!-- =========================
+<!-- =========================================================
      USER INFORMATION
-========================= -->
+========================================================= -->
+
+<section id="profile">
 
 <div class="user-section">
 
@@ -1291,10 +2564,12 @@ footer{
 
 </div>
 
+</section>
 
-<!-- =========================
+
+<!-- =========================================================
      PLAYER JOURNEY
-========================= -->
+========================================================= -->
 
 <div id="journey">
 
@@ -1302,17 +2577,14 @@ footer{
         Player Journey
     </h2>
 
-
-    <div id="journeyContent">
-
-    </div>
+    <div id="journeyContent"></div>
 
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      PRACTICE SESSION
-========================= -->
+========================================================= -->
 
 <div id="practice">
 
@@ -1437,24 +2709,29 @@ footer{
 </div>
 
 
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
-    🏏 Keep Practicing • Keep Improving • Keep Playing 🏏
+    <div class="footer-title">
+        🏏 Cricket World
+    </div>
+
+    <p>
+        Keep Practicing • Keep Improving • Keep Playing
+    </p>
 
 </footer>
-
 
 
 <script>
 
 
-/* =========================
+/* =========================================================
    PLAYER DATA
-========================= */
+========================================================= */
 
 const players = {
 
@@ -1692,14 +2969,11 @@ const players = {
 };
 
 
-/* =========================
+/* =========================================================
    SELECT PLAYER
-========================= */
+========================================================= */
 
-function selectPlayer(name, card){
-
-
-    /* Remove previous selection */
+function selectPlayer(name,card){
 
     document
         .querySelectorAll(".player-card")
@@ -1710,22 +2984,11 @@ function selectPlayer(name, card){
         });
 
 
-    /* Select current player */
-
     card.classList.add("selected");
-
-
-    /* Show journey */
 
     showJourney(name);
 
-
-    /* Show practice */
-
     showPractice(name);
-
-
-    /* Scroll to journey */
 
     setTimeout(function(){
 
@@ -1740,30 +3003,25 @@ function selectPlayer(name, card){
 }
 
 
-/* =========================
+/* =========================================================
    SHOW JOURNEY
-========================= */
+========================================================= */
 
 function showJourney(name){
-
 
     const data =
         players[name];
 
-
     document
         .getElementById("journey")
         .style.display="block";
-
 
     document
         .getElementById("journeyTitle")
         .innerText =
             name + " - Cricket Journey";
 
-
     let html="";
-
 
     data.journey.forEach(function(item){
 
@@ -1783,7 +3041,6 @@ function showJourney(name){
 
     });
 
-
     document
         .getElementById("journeyContent")
         .innerHTML=html;
@@ -1791,33 +3048,28 @@ function showJourney(name){
 }
 
 
-/* =========================
+/* =========================================================
    SHOW PRACTICE
-========================= */
+========================================================= */
 
 function showPractice(name){
-
 
     const data =
         players[name];
 
-
     document
         .getElementById("practice")
         .style.display="block";
-
 
     document
         .getElementById("battingPractice")
         .innerText =
             data.batting;
 
-
     document
         .getElementById("accuracyPractice")
         .innerText =
             data.accuracy;
-
 
     document
         .getElementById("dailyChallenge")
@@ -1827,36 +3079,31 @@ function showPractice(name){
 }
 
 
-/* =========================
+/* =========================================================
    USER PLAN
-========================= */
+========================================================= */
 
 function createPlan(){
-
 
     const name =
         document
         .getElementById("userName")
         .value;
 
-
     const age =
         document
         .getElementById("userAge")
         .value;
-
 
     const role =
         document
         .getElementById("userRole")
         .value;
 
-
     const goal =
         document
         .getElementById("userGoal")
         .value;
-
 
     if(
         name==="" ||
@@ -1873,13 +3120,11 @@ function createPlan(){
 
     }
 
-
     alert(
         "Great " +
         name +
         "! Your cricket profile has been created."
     );
-
 
     document
         .querySelector(".user-section")
@@ -1890,15 +3135,63 @@ function createPlan(){
 }
 
 
-/* =========================
+/* =========================================================
    BAT ANIMATION
-========================= */
+========================================================= */
 
-function batAnimation(){
+function batAnimation(number){
 
+    const messages = [
+
+        "🏏 PERFECT SHOT!",
+
+        "🔥 COVER DRIVE!",
+
+        "💥 WHAT A SHOT!"
+
+    ];
 
     showAnimation(
-        "🏏 PERFECT SHOT!"
+        messages[number-1] || "🏏 GREAT SHOT!"
+    );
+
+
+    for(
+        let i=0;
+        i<8;
+        i++
+    ){
+
+        createFlyingBall();
+
+    }
+
+
+    createSparks(8);
+
+}
+
+
+/* =========================================================
+   BALL ANIMATION
+========================================================= */
+
+function ballAnimation(number){
+
+    const messages = [
+
+        "🔴 FAST DELIVERY!",
+
+        "⚡ BOUNCER!",
+
+        "🔥 PERFECT YORKER!",
+
+        "🎯 GREAT DELIVERY!"
+
+    ];
+
+    showAnimation(
+        messages[number-1] || "🔴 FAST DELIVERY!"
     );
 
 
@@ -1912,77 +3205,67 @@ function batAnimation(){
 
     }
 
-}
-
-
-/* =========================
-   BALL ANIMATION
-========================= */
-
-function ballAnimation(){
-
-
-    showAnimation(
-        "🔴 FAST DELIVERY!"
-    );
-
-
-    for(
-        let i=0;
-        i<3;
-        i++
-    ){
-
-        createFlyingBall();
-
-    }
+    createSparks(5);
 
 }
 
 
-/* =========================
+/* =========================================================
    WICKET ANIMATION
-========================= */
+========================================================= */
 
-function wicketAnimation(){
+function wicketAnimation(number){
 
+    const messages = [
+
+        "🎯 WICKET!",
+
+        "💥 BOWLED!",
+
+        "🔥 WHAT A DELIVERY!"
+
+    ];
 
     showAnimation(
-        "🎯 WICKET!"
+        messages[number-1] || "🎯 WICKET!"
     );
 
 
-    document
-        .querySelector(".wicket")
-        .animate(
+    const wickets =
+        document.querySelectorAll(".wicket");
+
+
+    wickets.forEach(function(wicket){
+
+        wicket.animate(
 
             [
 
                 {
                     transform:
-                    "rotate(0deg)"
+                    "rotate(0deg) scale(1)"
                 },
 
                 {
                     transform:
-                    "rotate(-25deg)"
+                    "rotate(-25deg) scale(1.2)"
                 },
 
                 {
                     transform:
-                    "rotate(25deg)"
+                    "rotate(25deg) scale(1.2)"
                 },
 
                 {
                     transform:
-                    "rotate(0deg)"
+                    "rotate(0deg) scale(1)"
                 }
 
             ],
 
             {
 
-                duration:800,
+                duration:700,
 
                 iterations:2
 
@@ -1990,15 +3273,19 @@ function wicketAnimation(){
 
         );
 
+    });
+
+
+    createSparks(12);
+
 }
 
 
-/* =========================
+/* =========================================================
    SHOW MESSAGE
-========================= */
+========================================================= */
 
 function showAnimation(text){
-
 
     const message =
         document
@@ -2006,51 +3293,50 @@ function showAnimation(text){
             "animationMessage"
         );
 
-
     message.innerText=text;
-
 
     message.classList.remove("show");
 
-
     void message.offsetWidth;
-
 
     message.classList.add("show");
 
 }
 
 
-/* =========================
+/* =========================================================
    FLYING BALL
-========================= */
+========================================================= */
 
 function createFlyingBall(){
-
 
     const ball =
         document.createElement("div");
 
-
     ball.innerText="🔴";
-
 
     ball.className=
         "flying-ball";
 
-
     ball.style.left=
-        Math.random()*60 + 20 + "%";
-
+        Math.random()*70 + 15 + "%";
 
     ball.style.top=
-        Math.random()*40 + 30 + "%";
+        Math.random()*45 + 30 + "%";
 
+    ball.style.setProperty(
+        "--randomX",
+        Math.random()
+    );
+
+    ball.style.setProperty(
+        "--randomY",
+        Math.random()
+    );
 
     document
         .body
         .appendChild(ball);
-
 
     setTimeout(function(){
 
@@ -2060,9 +3346,72 @@ function createFlyingBall(){
 
 }
 
-</script>
 
+/* =========================================================
+   SPARK EFFECT
+========================================================= */
+
+function createSparks(count){
+
+    const symbols=[
+        "✨",
+        "⭐",
+        "💫",
+        "⚡",
+        "🔥"
+    ];
+
+    for(
+        let i=0;
+        i<count;
+        i++
+    ){
+
+        const spark =
+            document.createElement("div");
+
+        spark.className="spark";
+
+        spark.innerText=
+            symbols[
+                Math.floor(
+                    Math.random()*symbols.length
+                )
+            ];
+
+        spark.style.left=
+            Math.random()*80 + 10 + "%";
+
+        spark.style.top=
+            Math.random()*60 + 20 + "%";
+
+        spark.style.setProperty(
+            "--x",
+            (Math.random()*300-150)+"px"
+        );
+
+        spark.style.setProperty(
+            "--y",
+            (Math.random()*300-150)+"px"
+        );
+
+        document
+            .body
+            .appendChild(spark);
+
+        setTimeout(function(){
+
+            spark.remove();
+
+        },1000);
+
+    }
+
+}
+
+</script>
 
 </body>
 
 </html>
+```
